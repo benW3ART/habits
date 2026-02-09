@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genius Team — Your AI Product Team</title>
+<meta name="description" content="Open-source starter kit for multi-agent AI teams with Claude Code. From idea to production.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0a0f;--bg2:#12121a;--bg3:#1a1a2e;--bg4:#16213e;
+  --text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;
+  --purple:#7c3aed;--blue:#3b82f6;--cyan:#06b6d4;--pink:#ec4899;
+  --grad:linear-gradient(135deg,#7c3aed,#3b82f6);
+  --grad2:linear-gradient(135deg,#7c3aed 0%,#3b82f6 50%,#06b6d4 100%);
+  --radius:12px;--radius-lg:20px;
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+code,pre{font-family:'JetBrains Mono','Fira Code',monospace}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2rem;backdrop-filter:blur(20px);background:rgba(10,10,15,.8);border-bottom:1px solid rgba(124,58,237,.1);transition:all .3s}
+nav .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+nav .logo{font-weight:800;font-size:1.2rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+nav .nav-links{display:flex;gap:2rem;align-items:center}
+nav .nav-links a{font-size:.875rem;color:var(--text2);transition:color .2s}
+nav .nav-links a:hover{color:var(--text)}
+.nav-cta{padding:.5rem 1.25rem;border-radius:8px;background:var(--grad);color:#fff!important;font-weight:600;font-size:.875rem;-webkit-text-fill-color:#fff!important;transition:opacity .2s}
+.nav-cta:hover{opacity:.9}
+.mobile-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer}
+
+/* SECTIONS */
+section{padding:6rem 2rem}
+.container{max-width:1100px;margin:0 auto}
+.section-label{font-size:.75rem;text-transform:uppercase;letter-spacing:3px;color:var(--purple);font-weight:600;margin-bottom:.75rem}
+.section-title{font-size:clamp(1.75rem,4vw,2.5rem);font-weight:800;margin-bottom:1rem;line-height:1.2}
+.section-sub{color:var(--text2);font-size:1.05rem;max-width:650px;margin-bottom:3rem}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;padding-top:100px}
+.hero::before{content:'';position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(124,58,237,.15) 0%,rgba(59,130,246,.08) 40%,transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;border-radius:100px;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.3);font-size:.8rem;color:var(--purple);font-weight:500;margin-bottom:2rem}
+.hero h1{font-size:clamp(2.5rem,7vw,4.5rem);font-weight:800;line-height:1.05;margin-bottom:1.5rem;letter-spacing:-.02em}
+.hero h1 .grad{background:var(--grad2);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:clamp(1.1rem,2vw,1.35rem);color:var(--text2);max-width:600px;margin:0 auto 2.5rem}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;border-radius:10px;font-weight:600;font-size:1rem;transition:all .25s;cursor:pointer;border:none}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 4px 25px rgba(124,58,237,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 35px rgba(124,58,237,.5)}
+.btn-secondary{background:rgba(255,255,255,.06);color:var(--text);border:1px solid rgba(255,255,255,.1)}
+.btn-secondary:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.2)}
+.hero-terminal{margin-top:4rem;max-width:600px;margin-left:auto;margin-right:auto;text-align:left;background:var(--bg2);border-radius:var(--radius);border:1px solid rgba(255,255,255,.06);overflow:hidden}
+.terminal-bar{padding:.6rem 1rem;background:rgba(255,255,255,.03);display:flex;gap:.4rem;align-items:center}
+.terminal-dot{width:10px;height:10px;border-radius:50%}
+.terminal-bar span:nth-child(1){background:#ff5f56}.terminal-bar span:nth-child(2){background:#ffbd2e}.terminal-bar span:nth-child(3){background:#27c93f}
+.terminal-body{padding:1.25rem;font-size:.85rem;color:var(--text2);line-height:1.8}
+.terminal-body .prompt{color:var(--cyan)}
+.terminal-body .cmd{color:var(--text)}
+
+/* PIPELINE */
+.pipeline{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;margin-top:2rem}
+.pipeline-step{display:flex;align-items:center;gap:.4rem;padding:.5rem 1rem;border-radius:100px;background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.15);font-size:.8rem;font-weight:500;color:var(--text2);transition:all .3s}
+.pipeline-step:hover{background:rgba(124,58,237,.15);color:var(--text);transform:translateY(-2px)}
+.pipeline-arrow{color:var(--text3);font-size:.7rem}
+
+/* CARDS GRID */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+.card{background:var(--bg2);border:1px solid rgba(255,255,255,.06);border-radius:var(--radius-lg);padding:2rem;transition:all .35s;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);opacity:0;transition:opacity .3s}
+.card:hover{transform:translateY(-4px);border-color:rgba(124,58,237,.25);box-shadow:0 12px 40px rgba(0,0,0,.4)}
+.card:hover::before{opacity:1}
+.card-icon{font-size:2rem;margin-bottom:1rem;display:block}
+.card h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+.card p{color:var(--text2);font-size:.9rem;line-height:1.6}
+.card .badge{display:inline-block;padding:.2rem .6rem;border-radius:6px;font-size:.7rem;font-weight:600;margin-bottom:.75rem}
+.badge-default{background:rgba(124,58,237,.15);color:#a78bfa}
+.badge-ide{background:rgba(59,130,246,.15);color:#60a5fa}
+.badge-omni{background:rgba(6,182,212,.15);color:#22d3ee}
+.badge-dual{background:rgba(236,72,153,.15);color:#f472b6}
+
+/* CODE BLOCK */
+.code-block{position:relative;background:#0d1117;border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);overflow:hidden;margin-bottom:1.5rem}
+.code-header{display:flex;align-items:center;justify-content:space-between;padding:.6rem 1rem;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06)}
+.code-lang{font-size:.7rem;color:var(--text3);text-transform:uppercase;letter-spacing:1px;font-weight:600}
+.mode-tabs{display:flex;gap:.5rem;margin-bottom:1rem}
+.mode-tab{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:var(--text3);padding:.4rem 1.2rem;border-radius:8px;font-size:.8rem;cursor:pointer;font-family:'Inter',sans-serif;font-weight:500;transition:all .2s}
+.mode-tab:hover{background:rgba(255,255,255,.08);color:var(--text)}
+.mode-tab.active{background:linear-gradient(135deg,rgba(139,92,246,.3),rgba(59,130,246,.3));border-color:rgba(139,92,246,.5);color:#fff}
+.copy-btn{background:none;border:1px solid rgba(255,255,255,.1);color:var(--text3);padding:.3rem .7rem;border-radius:6px;font-size:.7rem;cursor:pointer;font-family:'JetBrains Mono',monospace;transition:all .2s}
+.copy-btn:hover{background:rgba(255,255,255,.06);color:var(--text)}
+.copy-btn.copied{color:#22c55e;border-color:rgba(34,197,94,.3)}
+.code-block pre{padding:1.25rem;overflow-x:auto;font-size:.85rem;line-height:1.7;color:#c9d1d9}
+.code-block .comment{color:#8b949e}
+.code-block .string{color:#a5d6ff}
+.code-block .flag{color:#d2a8ff}
+
+/* SKILLS GRID */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem}
+.skill-item{display:flex;align-items:center;gap:.75rem;padding:.85rem 1rem;background:var(--bg2);border:1px solid rgba(255,255,255,.05);border-radius:10px;font-size:.85rem;transition:all .3s}
+.skill-item:hover{border-color:rgba(124,58,237,.2);background:rgba(124,58,237,.05)}
+.skill-icon{font-size:1.1rem;width:28px;text-align:center;flex-shrink:0}
+.skill-name{font-weight:500}
+
+/* FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem}
+.feature{padding:2rem;border-radius:var(--radius-lg);background:linear-gradient(135deg,rgba(124,58,237,.05),rgba(59,130,246,.03));border:1px solid rgba(255,255,255,.05)}
+.feature h3{font-size:1.15rem;font-weight:700;margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+.feature p{color:var(--text2);font-size:.9rem}
+.feature ul{list-style:none;margin-top:.75rem}
+.feature li{color:var(--text2);font-size:.85rem;padding:.25rem 0;padding-left:1.2rem;position:relative}
+.feature li::before{content:'→';position:absolute;left:0;color:var(--purple)}
+
+/* WHAT IS */
+.what-text{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.what-text p{color:var(--text2);font-size:1.05rem;line-height:1.8}
+.what-diagram{display:flex;flex-direction:column;gap:.5rem}
+.phase{display:flex;align-items:center;gap:.5rem}
+.phase-label{font-size:.8rem;font-weight:600;padding:.4rem 1rem;border-radius:8px;background:rgba(124,58,237,.1);color:#a78bfa;min-width:160px;text-align:center}
+.phase-arrow{color:var(--text3)}
+
+/* FOOTER */
+footer{padding:3rem 2rem;border-top:1px solid rgba(255,255,255,.06);text-align:center}
+footer p{color:var(--text3);font-size:.85rem}
+footer a{color:var(--purple);transition:color .2s}
+footer a:hover{color:#a78bfa}
+footer .footer-links{display:flex;justify-content:center;gap:2rem;margin-bottom:1rem;flex-wrap:wrap}
+
+/* ANIMATIONS */
+.fade-in{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:rgba(10,10,15,.95);padding:1.5rem;gap:1rem;border-bottom:1px solid rgba(255,255,255,.06)}
+  nav .nav-links.open{display:flex}
+  .mobile-toggle{display:block}
+  section{padding:4rem 1.25rem}
+  .what-text{grid-template-columns:1fr}
+  .hero h1{font-size:2.2rem}
+  .features-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+}
+
+/* Glow orbs */
+.glow{position:fixed;border-radius:50%;filter:blur(120px);pointer-events:none;z-index:-1;opacity:.4}
+.glow-1{width:500px;height:500px;background:rgba(124,58,237,.12);top:10%;left:-10%}
+.glow-2{width:400px;height:400px;background:rgba(59,130,246,.1);bottom:20%;right:-5%}
+</style>
+</head>
+<body>
+
+<div class="glow glow-1"></div>
+<div class="glow glow-2"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="logo">🧠 Genius Team</a>
+    <button class="mobile-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">☰</button>
+    <div class="nav-links">
+      <a href="#what">About</a>
+      <a href="#modes">Modes</a>
+      <a href="#features">Features</a>
+      <a href="#quickstart">Quick Start</a>
+      <a href="#skills">Skills</a>
+      <a href="https://github.com/w-3-art/genius-team" class="nav-cta" target="_blank">GitHub →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="fade-in">
+      <div class="hero-badge">✨ v9.0 — Agent Teams + File-Based Memory</div>
+      <h1>Your <span class="grad">AI Product Team.</span><br>From Idea to Production.</h1>
+      <p>An open-source starter kit of 21+ specialized AI skills for Claude Code that work together to build your project from start to finish.</p>
+      <div class="hero-btns">
+        <a href="#quickstart" class="btn btn-primary">Get Started</a>
+        <a href="https://github.com/w-3-art/genius-team" target="_blank" class="btn btn-secondary">⭐ View on GitHub</a>
+      </div>
+    </div>
+    <div class="hero-terminal fade-in">
+      <div class="terminal-bar"><span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span></div>
+      <div class="terminal-body">
+        <div><span class="prompt">$</span> <span class="cmd">bash &lt;(curl -fsSL https://raw.githubusercontent.com/w-3-art/genius-team/main/scripts/create.sh) my-app</span></div>
+        <div style="color:#22c55e">✓ Cloned genius-team → my-app</div>
+        <div style="color:#22c55e">✓ Configured CLI mode</div>
+        <div style="color:#a78bfa">🧠 Say what you want to build...</div>
+        <div><span class="prompt">→</span> <span class="cmd">I want to build a booking system for a hair salon</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS -->
+<section id="what">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">What is Genius Team?</div>
+      <div class="section-title">A complete AI product pipeline</div>
+      <div class="section-sub">Genius Team orchestrates 21+ specialized AI agents that collaborate to take your idea through every stage of product development — autonomously.</div>
+    </div>
+    <div class="pipeline fade-in">
+      <span class="pipeline-step">🔍 Discovery</span><span class="pipeline-arrow">→</span>
+      <span class="pipeline-step">📊 Market</span><span class="pipeline-arrow">→</span>
+      <span class="pipeline-step">📋 Specs</span><span class="pipeline-arrow">→</span>
+      <span class="pipeline-step">🎨 Design</span><span class="pipeline-arrow">→</span>
+      <span class="pipeline-step">📣 Marketing</span><span class="pipeline-arrow">→</span>
+      <span class="pipeline-step">🏗️ Architecture</span><span class="pipeline-arrow">→</span>
+      <span class="pipeline-step">⚡ Development</span><span class="pipeline-arrow">→</span>
+      <span class="pipeline-step">✅ QA</span><span class="pipeline-arrow">→</span>
+      <span class="pipeline-step">🔒 Security</span><span class="pipeline-arrow">→</span>
+      <span class="pipeline-step">🚀 Deploy</span>
+    </div>
+    <div class="features-grid fade-in" style="margin-top:3rem">
+      <div class="feature">
+        <h3>🤖 Phase 1: Ideation</h3>
+        <p>Conversational and collaborative. The AI interviews you, validates your idea, and produces specs, design, and architecture — with your approval at every checkpoint.</p>
+      </div>
+      <div class="feature">
+        <h3>⚡ Phase 2: Execution</h3>
+        <p>Fully autonomous. Agent Teams execute tasks in parallel with git worktree isolation, mandatory QA loops, and real-time progress tracking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODES -->
+<section id="modes" style="background:var(--bg2)">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Operating Modes</div>
+      <div class="section-title">Choose your workflow</div>
+      <div class="section-sub">Four modes to match how you work. Switch anytime.</div>
+    </div>
+    <div class="cards-grid fade-in">
+      <div class="card">
+        <span class="badge badge-default">Default</span>
+        <span class="card-icon">⌨️</span>
+        <h3>CLI Mode</h3>
+        <p>Terminal-focused. Full hook system (SessionStart, PreCompact, Stop, PostToolUse). Agent Teams via Shift+Tab.</p>
+      </div>
+      <div class="card">
+        <span class="badge badge-ide">VS Code</span>
+        <span class="card-icon">🖥️</span>
+        <h3>IDE Mode</h3>
+        <p>VS Code & Cursor focused. Installs tasks and rules automatically. Agent Teams via Task().</p>
+      </div>
+      <div class="card">
+        <span class="badge badge-omni">Multi-Provider</span>
+        <span class="card-icon">🌐</span>
+        <h3>Omni Mode</h3>
+        <p>Claude Code leads, secondary providers (Codex, Kimi, Gemini) handle specialized tasks. Auto-fallback.</p>
+      </div>
+      <div class="card">
+        <span class="badge badge-dual">Adversarial</span>
+        <span class="card-icon">⚔️</span>
+        <h3>Dual Mode</h3>
+        <p>Builder + Challenger adversarial workflow. One model builds, another challenges. Higher code quality.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Features</div>
+      <div class="section-title">Built for serious projects</div>
+      <div class="section-sub">Everything you need to go from zero to production, with no external dependencies.</div>
+    </div>
+    <div class="features-grid fade-in">
+      <div class="feature">
+        <h3>🤖 Agent Teams</h3>
+        <p>Built on Claude Code's experimental agent teams. The Lead orchestrates while teammates execute in parallel with git worktree isolation.</p>
+      </div>
+      <div class="feature">
+        <h3>🧠 File-Based Memory</h3>
+        <p>No external MCPs. Memory lives in <code>.genius/memory/</code> with auto-generated BRIEFING.md loaded at every session.</p>
+        <ul>
+          <li>decisions.json — Key decisions</li>
+          <li>patterns.json — Code conventions</li>
+          <li>progress.json — Task tracking</li>
+          <li>errors.json — Resolved solutions</li>
+        </ul>
+      </div>
+      <div class="feature">
+        <h3>🔄 Mandatory QA Loop</h3>
+        <p>Every task goes through: Dev → QA-micro → Fix → Re-QA → ✅. Nothing ships without passing quality assurance.</p>
+      </div>
+      <div class="feature">
+        <h3>💰 Save-Token Mode</h3>
+        <p>Toggle <code>/save-tokens</code> to use Sonnet for high-volume roles while keeping Opus for lead and architect. Cut costs without cutting quality.</p>
+      </div>
+      <div class="feature">
+        <h3>✂️ Zero Dependencies</h3>
+        <p>No Vibeship, no Mind MCP, no Spawner. Pure Claude Code + file system. Install and go.</p>
+      </div>
+      <div class="feature">
+        <h3>🔄 Self-Update</h3>
+        <p>Detects Claude Code version changes at session start and proposes repo updates automatically.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUICK START -->
+<section id="quickstart" style="background:var(--bg2)">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Quick Start</div>
+      <div class="section-title">Up and running in 30 seconds</div>
+      <div class="section-sub">One command. That's all it takes.</div>
+    </div>
+    <div class="fade-in">
+      <div class="mode-tabs">
+        <button class="mode-tab active" onclick="switchInstallMode('cli', this)">CLI</button>
+        <button class="mode-tab" onclick="switchInstallMode('ide', this)">IDE</button>
+        <button class="mode-tab" onclick="switchInstallMode('omni', this)">Omni</button>
+        <button class="mode-tab" onclick="switchInstallMode('dual', this)">Dual</button>
+      </div>
+      <div class="code-block" id="install-cli" style="display:block">
+        <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        <pre>bash &lt;(curl -fsSL https://raw.githubusercontent.com/w-3-art/genius-team/main/scripts/create.sh) my-project</pre>
+      </div>
+      <div class="code-block" id="install-ide" style="display:none">
+        <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        <pre>bash &lt;(curl -fsSL https://raw.githubusercontent.com/w-3-art/genius-team/main/scripts/create.sh) my-project --mode ide</pre>
+      </div>
+      <div class="code-block" id="install-omni" style="display:none">
+        <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        <pre>bash &lt;(curl -fsSL https://raw.githubusercontent.com/w-3-art/genius-team/main/scripts/create.sh) my-project --mode omni</pre>
+      </div>
+      <div class="code-block" id="install-dual" style="display:none">
+        <div class="code-header"><span class="code-lang">bash</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        <pre>bash &lt;(curl -fsSL https://raw.githubusercontent.com/w-3-art/genius-team/main/scripts/create.sh) my-project --mode dual</pre>
+      </div>
+      <div class="code-block" style="margin-top:.5rem">
+        <div class="code-header"><span class="code-lang">bash</span><span style="color:var(--text3);font-size:.75rem">Manual setup</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        <pre>git clone https://github.com/w-3-art/genius-team.git my-project
+cd my-project
+./scripts/setup.sh</pre>
+      </div>
+      <div class="code-block">
+        <div class="code-header"><span class="code-lang">Claude Code</span><button class="copy-btn" onclick="copyCode(this)">Copy</button></div>
+        <pre><span class="comment"># Open Claude Code and run:</span>
+/genius-start
+
+<span class="comment"># Then describe what you want:</span>
+I want to build a booking system for a hair salon</pre>
+      </div>
+      <p style="color:var(--text2);margin-top:1.5rem;font-size:.9rem">
+        <strong>Requirements:</strong> Claude Code (latest) · Claude Opus 4 · jq · Git · Node.js 18+
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Skills</div>
+      <div class="section-title">21+ specialized agents</div>
+      <div class="section-sub">Each skill is a domain expert. Together, they're your AI product team.</div>
+    </div>
+    <div class="skills-grid fade-in">
+      <div class="skill-item"><span class="skill-icon">🧠</span><span class="skill-name">genius-team</span></div>
+      <div class="skill-item"><span class="skill-icon">🎤</span><span class="skill-name">genius-interviewer</span></div>
+      <div class="skill-item"><span class="skill-icon">📊</span><span class="skill-name">genius-product-market-analyst</span></div>
+      <div class="skill-item"><span class="skill-icon">📋</span><span class="skill-name">genius-specs</span></div>
+      <div class="skill-item"><span class="skill-icon">🎨</span><span class="skill-name">genius-designer</span></div>
+      <div class="skill-item"><span class="skill-icon">📣</span><span class="skill-name">genius-marketer</span></div>
+      <div class="skill-item"><span class="skill-icon">✍️</span><span class="skill-name">genius-copywriter</span></div>
+      <div class="skill-item"><span class="skill-icon">🔗</span><span class="skill-name">genius-integration-guide</span></div>
+      <div class="skill-item"><span class="skill-icon">🏗️</span><span class="skill-name">genius-architect</span></div>
+      <div class="skill-item"><span class="skill-icon">🎯</span><span class="skill-name">genius-orchestrator</span></div>
+      <div class="skill-item"><span class="skill-icon">⚡</span><span class="skill-name">genius-dev</span></div>
+      <div class="skill-item"><span class="skill-icon">✅</span><span class="skill-name">genius-qa</span></div>
+      <div class="skill-item"><span class="skill-icon">🔍</span><span class="skill-name">genius-qa-micro</span></div>
+      <div class="skill-item"><span class="skill-icon">🐛</span><span class="skill-name">genius-debugger</span></div>
+      <div class="skill-item"><span class="skill-icon">👀</span><span class="skill-name">genius-reviewer</span></div>
+      <div class="skill-item"><span class="skill-icon">🔒</span><span class="skill-name">genius-security</span></div>
+      <div class="skill-item"><span class="skill-icon">🚀</span><span class="skill-name">genius-deployer</span></div>
+      <div class="skill-item"><span class="skill-icon">💾</span><span class="skill-name">genius-memory</span></div>
+      <div class="skill-item"><span class="skill-icon">👋</span><span class="skill-name">genius-onboarding</span></div>
+      <div class="skill-item"><span class="skill-icon">🧪</span><span class="skill-name">genius-test-assistant</span></div>
+      <div class="skill-item"><span class="skill-icon">⚙️</span><span class="skill-name">genius-team-optimizer</span></div>
+      <div class="skill-item"><span class="skill-icon">🔄</span><span class="skill-name">genius-updater</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href="https://github.com/w-3-art/genius-team" target="_blank">GitHub</a>
+      <a href="https://github.com/w-3-art/genius-team/blob/main/LICENSE" target="_blank">MIT License</a>
+      <a href="https://github.com/w-3-art/genius-team/blob/main/docs/GETTING-STARTED.md" target="_blank">Docs</a>
+    </div>
+    <p>Built with 🧠 <strong>Genius Team v9.0</strong> — Agent Teams + File-Based Memory</p>
+  </div>
+</footer>
+
+<script>
+// Fade-in on scroll
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// Copy code
+function switchInstallMode(mode, btn) {
+  document.querySelectorAll('.mode-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  ['cli','ide','omni','dual'].forEach(m => {
+    const el = document.getElementById('install-' + m);
+    if (el) el.style.display = m === mode ? 'block' : 'none';
+  });
+}
+function copyCode(btn) {
+  const pre = btn.closest('.code-block').querySelector('pre');
+  navigator.clipboard.writeText(pre.textContent).then(() => {
+    btn.textContent = 'Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// Close mobile nav on link click
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => document.querySelector('.nav-links').classList.remove('open'));
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+{
+  "version": "9.0.0",
+  "mode": "cli",
+  "models": {
+    "default": "opus",
+    "saveTokenMode": false,
+    "roles": {
+      "lead": "opus",
+      "architect": "opus",
+      "interviewer": "opus",
+      "dev": "opus",
+      "qa": "opus",
+      "qa-micro": "opus",
+      "debugger": "opus",
+      "reviewer": "opus",
+      "specs": "opus",
+      "designer": "opus",
+      "marketer": "opus",
+      "copywriter": "opus",
+      "security": "opus",
+      "deployer": "opus"
+    }
+  },
+  "saveTokenModeOverrides": {
+    "dev": "sonnet",
+    "qa-micro": "sonnet",
+    "debugger": "sonnet",
+    "reviewer": "sonnet"
+  },
+  "memory": {
+    "briefingMaxLines": 150,
+    "decayDays": {
+      "progress": 7,
+      "context": 30
+    },
+    "sessionLogRetention": 30
+  }
+}

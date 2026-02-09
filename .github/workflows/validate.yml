@@ -1,0 +1,50 @@
+name: Validate
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate JSON files
+        run: |
+          echo "Checking JSON files..."
+          find . -name '*.json' -not -path './node_modules/*' | while read f; do
+            jq empty "$f" || { echo "❌ Invalid JSON: $f"; exit 1; }
+          done
+          echo "✅ All JSON files valid"
+
+      - name: Check bash syntax
+        run: |
+          echo "Checking shell scripts..."
+          find . -name '*.sh' -not -path './node_modules/*' | while read f; do
+            bash -n "$f" || { echo "❌ Syntax error: $f"; exit 1; }
+          done
+          echo "✅ All scripts pass syntax check"
+
+      - name: Check for Mind MCP remnants
+        run: |
+          echo "Checking for mind_recall/mind_log references..."
+          if grep -r 'mind_recall\|mind_log\|Mind MCP' --include='*.md' --include='*.sh' --include='*.json' . --exclude-dir=node_modules --exclude-dir=.git; then
+            echo "❌ Found Mind MCP references — these should be removed"
+            exit 1
+          fi
+          echo "✅ No Mind MCP remnants found"
+
+      - name: Verify skills have SKILL.md
+        run: |
+          echo "Checking skills directories..."
+          failed=0
+          for dir in .genius/skills/*/; do
+            [ -d "$dir" ] || continue
+            if [ ! -f "${dir}SKILL.md" ]; then
+              echo "❌ Missing SKILL.md in $dir"
+              failed=1
+            fi
+          done
+          [ $failed -eq 0 ] && echo "✅ All skills have SKILL.md"
+          exit $failed

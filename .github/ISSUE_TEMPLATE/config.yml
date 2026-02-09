@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions & Discussion
+    url: https://github.com/anthropics/claude-code/discussions
+    about: For questions about Claude Code itself, visit the official discussions.
+  - name: Documentation
+    url: https://github.com/anthropics/claude-code#readme
+    about: Check the docs before opening an issue.

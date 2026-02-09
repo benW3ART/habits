@@ -1,0 +1,39 @@
+# Genius Team - User Profile
+# This file stores your preferences across all projects
+# Copy to ~/.genius/USER-PROFILE.yaml
+
+identity:
+  name: ""                    # Your name
+  role: "developer"           # developer, founder, designer, etc.
+  timezone: "Europe/Paris"    # Your timezone
+  languages:
+    - "en"                    # Preferred languages
+    - "fr"
+
+preferences:
+  communication:
+    style: "direct"           # direct, detailed, casual
+    language: "fr"            # Primary language for responses
+    no_fluff: true            # Skip unnecessary explanations
+
+  tech_stack:
+    frontend: "Next.js"       # React, Vue, Svelte, etc.
+    backend: "Supabase"       # Node, Django, Rails, etc.
+    styling: "Tailwind"       # Tailwind, CSS Modules, etc.
+    deployment: "Vercel"      # Vercel, Railway, AWS, etc.
+    testing: "Vitest"         # Jest, Vitest, Playwright
+
+  coding:
+    typescript: "strict"      # strict, moderate, loose
+    formatting: "prettier"    # prettier, eslint, none
+    comments_language: "fr"   # Language for code comments
+
+  workflow:
+    checkpoints: true         # Pause at key milestones for approval
+    auto_validate: true       # Run validation after each skill
+    memory_triggers: true     # Auto-save decisions to memory
+
+# Auto-updated by Mind MCP
+history:
+  projects: []                # List of past projects
+  recent_decisions: []        # Recent cross-project decisions

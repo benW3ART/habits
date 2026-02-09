@@ -1,0 +1,32 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Genius: Generate Memory Briefing",
+      "type": "shell",
+      "command": "bash scripts/memory-briefing.sh",
+      "group": "none",
+      "presentation": {
+        "reveal": "silent"
+      }
+    },
+    {
+      "label": "Genius: Extract Memories",
+      "type": "shell",
+      "command": "bash scripts/memory-extract.sh",
+      "group": "none"
+    },
+    {
+      "label": "Genius: Setup",
+      "type": "shell",
+      "command": "bash scripts/setup.sh --mode ide",
+      "group": "none"
+    },
+    {
+      "label": "Genius: Verify",
+      "type": "shell",
+      "command": "bash scripts/verify.sh",
+      "group": "none"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+.next/
+dist/
+build/
+out/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Genius Team — Keep these tracked
+# .genius/
+# .claude/
+
+# But ignore backups and logs
+.genius/backups/
+.genius/memory/session-logs/*.md
+.genius/memory/session-logs/**
+!.genius/memory/session-logs/.gitkeep
+.genius/*.log
+.genius/activity.log
+.genius/dual-state.json
+.genius/dual-review-request.md
+.genius/dual-verdict.md
+.genius/dual-discussion.md
+.genius/dual-audit-report.md
+.genius/claude-code-version.txt
+
+# Secrets (never commit)
+*.pem
+*.key
+credentials.json
+token.json

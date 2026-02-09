@@ -1,0 +1,32 @@
+# Genius Team v9.0 — Cursor Rules
+
+## Project Context
+Read `CLAUDE.md` at the project root for full instructions and conventions.
+
+## Genius Team Conventions
+- This project uses **Genius Team v9.0**, a structured AI product team framework
+- 21+ specialized skills live in `.claude/skills/` — each has a `SKILL.md`
+- Subagent definitions are in `.claude/agents/`
+- Slash commands are in `.claude/commands/`
+
+## Memory System
+- Memory is file-based in `.genius/memory/`
+- `BRIEFING.md` is auto-generated — don't edit manually
+- `decisions.json` — key decisions with rationale
+- `patterns.json` — code patterns and conventions
+- `progress.json` — task progress tracking
+- `errors.json` — resolved errors and solutions
+
+## Workflow
+1. **IDEATION phase**: Conversational — skills ask questions, user approves at checkpoints
+2. **EXECUTION phase**: Autonomous — Agent Teams build in parallel with mandatory QA
+
+## Task Tracking
+- Tasks live in `.claude/plan.md` (checkbox format)
+- State is tracked in `.genius/state.json`
+- Progress summaries go in `PROGRESS.md`
+
+## Key Rules
+- Every code change must pass QA (Dev → QA-micro → Fix → Re-QA → ✅)
+- Use `jq` for JSON manipulation
+- Don't modify `.claude/settings.json` directly — use `configs/` and setup.sh
