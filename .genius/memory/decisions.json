@@ -1,1 +1,121 @@
-[]
+[
+  {
+    "id": "d-001",
+    "decision": "DISCOVERY: Change2Earn habit app for Solana Seeker | Logs habit progress as blockchain transactions to farm $SKR | Bet-against-yourself staking mechanism for accountability",
+    "reason": "Initial project vision from user interview",
+    "timestamp": "2026-02-09T16:40:00+00:00",
+    "tags": ["discovery", "interview", "concept"]
+  },
+  {
+    "id": "d-002",
+    "decision": "GTM STRATEGY: Short-term = SKR farmers (bootstrap user base) | Long-term = genuine habit-changers in crypto space",
+    "reason": "Two-phase audience strategy - come for tokens, stay for change",
+    "timestamp": "2026-02-09T16:41:00+00:00",
+    "tags": ["discovery", "interview", "gtm", "audience"]
+  },
+  {
+    "id": "d-003",
+    "decision": "CORE INSIGHT: Token urgency overcomes habit procrastination | Blockchain = motivation hack, not solution | People don't postpone money opportunities",
+    "reason": "Key psychological lever for product design",
+    "timestamp": "2026-02-09T16:42:00+00:00",
+    "tags": ["discovery", "interview", "psychology", "insight"]
+  },
+  {
+    "id": "d-004",
+    "decision": "UX: Log via button taps → sign light tx (<1 cent) | Some actions need number input | Optional comments | No shame philosophy - log good AND bad actions",
+    "reason": "Simplicity is critical for adoption, awareness of failures is therapeutic",
+    "timestamp": "2026-02-09T16:43:00+00:00",
+    "tags": ["discovery", "interview", "ux", "logging"]
+  },
+  {
+    "id": "d-005",
+    "decision": "HABIT SETUP: Default choices by category + custom habits | Define both positive and negative actions toward goal",
+    "reason": "Lower friction to start, flexibility for custom needs",
+    "timestamp": "2026-02-09T16:43:00+00:00",
+    "tags": ["discovery", "interview", "onboarding", "habits"]
+  },
+  {
+    "id": "d-006",
+    "decision": "TX STRATEGY: No batching - each log = 1 transaction | SKR S2 rewards consistent daily activity (1-5 organic tx) + weekly scoring | Anti-sybil active",
+    "reason": "Research: S2 has Activity Tracker with weekly reset, tracks dApps/daily usage/new things, genuine usage only",
+    "timestamp": "2026-02-09T16:44:00+00:00",
+    "tags": ["discovery", "research", "skr", "transactions", "season2"]
+  },
+  {
+    "id": "d-007",
+    "decision": "ECONOMIC MODEL: Hybrid - SOL stakes (5% rake, losers fund winners) + $HABITS token (1B supply, activity rewards)",
+    "reason": "5% rake competitive, 1B supply standard, combines real stakes with token potential",
+    "timestamp": "2026-02-09T16:46:00+00:00",
+    "tags": ["discovery", "interview", "tokenomics", "decision"]
+  },
+  {
+    "id": "d-008",
+    "decision": "ADMIN PANEL: All tokenomics values must be adjustable (emissions, costs, boosts, rake %) via admin interface",
+    "reason": "Economy needs real-time tuning based on user behavior and market conditions",
+    "timestamp": "2026-02-09T16:48:00+00:00",
+    "tags": ["discovery", "interview", "requirements", "admin"]
+  },
+  {
+    "id": "d-009",
+    "decision": "TIMELINE: Launch this week - VIBE CODING mode, ship fast, be ambitious",
+    "reason": "Capture SKR farmers while Season 2 is hot, AI-assisted rapid development",
+    "timestamp": "2026-02-09T16:49:00+00:00",
+    "tags": ["discovery", "interview", "constraints", "timeline", "vibe-coding"]
+  },
+  {
+    "id": "d-010",
+    "decision": "TECH STACK: PWA with Next.js - fast to ship, works on Seeker browser, can wrap native later",
+    "reason": "Speed to market priority, Seeker has good browser support",
+    "timestamp": "2026-02-09T16:50:00+00:00",
+    "tags": ["discovery", "interview", "tech", "stack"]
+  },
+  {
+    "id": "d-011",
+    "decision": "WALLETS: Solana Wallet Adapter + Phantom (minimum) + Seed Vault (Seeker native)",
+    "reason": "Phantom for desktop/testing, Seed Vault for Seeker users",
+    "timestamp": "2026-02-09T16:51:00+00:00",
+    "tags": ["discovery", "interview", "tech", "wallets"]
+  },
+  {
+    "id": "d-012",
+    "decision": "SOLANA XP: User has token/NFT experience, new to Anchor - will learn custom programs",
+    "reason": "Calibrate architecture complexity accordingly",
+    "timestamp": "2026-02-09T16:51:00+00:00",
+    "tags": ["discovery", "interview", "constraints", "skills"]
+  },
+  {
+    "id": "d-013",
+    "decision": "TOKEN STRATEGY: Tease $HABITS, deploy later - track activity off-chain for retroactive airdrop",
+    "reason": "Faster MVP, creates FOMO, rewards early adopters, adjust tokenomics based on real data",
+    "timestamp": "2026-02-09T16:52:00+00:00",
+    "tags": ["discovery", "interview", "token", "strategy", "gtm"]
+  },
+  {
+    "id": "d-014",
+    "decision": "i18n: English default, next-intl setup from day 1 for easy translation later",
+    "reason": "Avoid refactoring later, global audience potential",
+    "timestamp": "2026-02-09T16:52:00+00:00",
+    "tags": ["discovery", "interview", "tech", "i18n"]
+  },
+  {
+    "id": "d-015",
+    "decision": "DISCOVERY COMPLETE: DISCOVERY.xml generated, validated by user, ready for architecture",
+    "reason": "All core requirements gathered, scope defined, constraints understood",
+    "timestamp": "2026-02-09T16:53:00+00:00",
+    "tags": ["discovery", "complete", "milestone"]
+  },
+  {
+    "id": "d-016",
+    "decision": "ARCH: Next.js 14 App Router + Supabase + Solana (memo tx for MVP, Anchor program later)",
+    "reason": "Fastest path to ship this week, memo tx avoids program deployment complexity",
+    "timestamp": "2026-02-09T16:55:00+00:00",
+    "tags": ["architecture", "decision", "tech"]
+  },
+  {
+    "id": "d-017",
+    "decision": "DESIGN SYSTEM: Option C - Bold Minimal | Primary: #FFE600 (yellow) | BG: #000 | Font: Syne + Outfit",
+    "reason": "User selected brutalist high-contrast black & yellow design",
+    "timestamp": "2026-02-09T17:00:00+00:00",
+    "tags": ["design", "complete", "branding"]
+  }
+]

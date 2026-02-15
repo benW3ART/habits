@@ -1,0 +1,5 @@
+export { Hero } from './Hero'
+export { Features } from './Features'
+export { HowItWorks } from './HowItWorks'
+export { TokenTeaser } from './TokenTeaser'
+export { CTA } from './CTA'

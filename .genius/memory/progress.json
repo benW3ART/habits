@@ -1,1 +1,62 @@
-[]
+[
+  {
+    "id": "t-1b1c50df",
+    "task": "**Task**: Create Next.js 14 app with TypeScript",
+    "status": "completed",
+    "timestamp": "2026-02-15T01:18:29"
+  },
+  {
+    "id": "t-91e7c069",
+    "task": "**Task**: Install all required packages",
+    "status": "completed",
+    "timestamp": "2026-02-15T01:18:29"
+  },
+  {
+    "id": "t-e4a339d5",
+    "task": "**Task**: Initialize shadcn/ui and add base components",
+    "status": "completed",
+    "timestamp": "2026-02-15T01:18:29"
+  },
+  {
+    "id": "t-4cb69376",
+    "task": "**Task**: Setup next-pwa configuration",
+    "status": "completed",
+    "timestamp": "2026-02-15T01:18:29"
+  },
+  {
+    "id": "t-1ce1d1f4",
+    "task": "**Task**: Configure next-intl for internationalization",
+    "status": "completed",
+    "timestamp": "2026-02-15T01:18:29"
+  },
+  {
+    "id": "t-48968076",
+    "task": "**Task**: Initialize Supabase client and types",
+    "status": "completed",
+    "timestamp": "2026-02-15T01:18:29"
+  },
+  {
+    "id": "t-7055705d",
+    "task": "**Task**: Create all database tables",
+    "status": "completed",
+    "timestamp": "2026-02-15T01:18:29"
+  },
+  {
+    "id": "t-ec2b2afe",
+    "task": "**Task**: Add preset habits to database",
+    "status": "completed",
+    "timestamp": "2026-02-15T01:18:29"
+  },
+  {
+    "id": "t-b7fab255",
+    "task": "**Task**: Create Solana wallet provider",
+    "status": "completed",
+    "timestamp": "2026-02-15T01:18:29"
+  },
+  {
+    "id": "t-15440182",
+    "task": "**Task**: Create wallet connect button component",
+    "status": "completed",
+    "timestamp": "2026-02-15T01:18:29"
+  }
+]

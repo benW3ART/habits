@@ -1,0 +1,161 @@
+{
+  "common": {
+    "appName": "Habits",
+    "tagline": "Change2Earn",
+    "connectWallet": "Connect Wallet",
+    "disconnect": "Disconnect",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "confirm": "Confirm"
+  },
+  "landing": {
+    "hero": {
+      "title": "CHANGE YOUR HABITS.",
+      "titleHighlight": "EARN REWARDS.",
+      "subtitle": "Log every action. Build streaks. Farm $SKR. Get $HABITS.",
+      "cta": "START NOW"
+    },
+    "features": {
+      "title": "HOW IT WORKS",
+      "log": {
+        "title": "LOG",
+        "description": "Track your good and bad habits. Every action counts."
+      },
+      "earn": {
+        "title": "EARN",
+        "description": "Each log is a Solana transaction. Farm $SKR automatically."
+      },
+      "change": {
+        "title": "CHANGE",
+        "description": "Build streaks. Bet on yourself. Actually transform."
+      }
+    },
+    "points": {
+      "title": "EARLY USERS WILL BE REWARDED",
+      "subtitle": "$HABITS token coming soon. Your activity is being tracked."
+    },
+    "cta": {
+      "title": "READY TO CHANGE?",
+      "button": "CONNECT WALLET"
+    }
+  },
+  "dashboard": {
+    "welcome": "Welcome back",
+    "streak": "Day Streak",
+    "success": "Success Rate",
+    "points": "Points Earned",
+    "pointsLabel": "$HABITS coming soon",
+    "todayHabits": "TODAY",
+    "noHabits": "No habits yet. Create your first one!"
+  },
+  "habits": {
+    "title": "My Habits",
+    "create": "New Habit",
+    "presets": "Choose a Preset",
+    "custom": "Custom Habit",
+    "name": "Habit Name",
+    "goal": "Your Goal",
+    "positiveActions": "Positive Actions",
+    "negativeActions": "Negative Actions",
+    "addAction": "Add Action",
+    "streak": "day streak",
+    "logged": "Logged!",
+    "categories": {
+      "health": "Health",
+      "fitness": "Fitness",
+      "mindfulness": "Mindfulness",
+      "productivity": "Productivity",
+      "lifestyle": "Lifestyle"
+    }
+  },
+  "bets": {
+    "title": "My Bets",
+    "create": "New Bet",
+    "active": "Active",
+    "completed": "Completed",
+    "stake": "Stake Amount",
+    "duration": "Duration",
+    "days": "days",
+    "goal": "Your Goal",
+    "dailyLog": "Daily logging required",
+    "forfeit": "Miss a day = forfeit 20%",
+    "win": "You won!",
+    "lose": "You lost",
+    "pending": "In progress"
+  },
+  "leaderboard": {
+    "title": "Leaderboard",
+    "byPoints": "By Points",
+    "byStreaks": "By Streaks",
+    "rank": "Rank",
+    "user": "User",
+    "points": "Points",
+    "streak": "Streak",
+    "you": "You"
+  },
+  "nav": {
+    "home": "Home",
+    "habits": "Habits",
+    "bets": "Bets",
+    "rank": "Rank"
+  },
+  "presets": {
+    "quitSmoking": {
+      "name": "Quit Smoking",
+      "goal": "Become smoke-free",
+      "positive": ["Resisted craving", "Smoke-free day"],
+      "negative": ["Smoked one", "Had multiple"]
+    },
+    "exercise": {
+      "name": "Exercise Daily",
+      "goal": "Stay active every day",
+      "positive": ["Worked out", "Went for a walk"],
+      "negative": ["Skipped workout", "Sedentary day"]
+    },
+    "drinkWater": {
+      "name": "Drink Water",
+      "goal": "Stay hydrated",
+      "positive": ["Drank 8 glasses", "Stayed hydrated"],
+      "negative": ["Forgot to drink", "Drank soda instead"]
+    },
+    "meditate": {
+      "name": "Meditate",
+      "goal": "Find inner peace",
+      "positive": ["Meditated 10min", "Deep breathing"],
+      "negative": ["Skipped session", "Too distracted"]
+    },
+    "readBooks": {
+      "name": "Read Books",
+      "goal": "Read more, scroll less",
+      "positive": ["Read 30 min", "Finished a chapter"],
+      "negative": ["No reading today", "Scrolled instead"]
+    },
+    "noSocialMedia": {
+      "name": "No Social Media",
+      "goal": "Break the scroll addiction",
+      "positive": ["Social-free day", "Limited to 30min"],
+      "negative": ["Doom scrolled", "Wasted hours"]
+    },
+    "sleepEarly": {
+      "name": "Sleep Early",
+      "goal": "Get proper rest",
+      "positive": ["In bed by 10pm", "8 hours sleep"],
+      "negative": ["Stayed up late", "Less than 6 hours"]
+    },
+    "eatHealthy": {
+      "name": "Eat Healthy",
+      "goal": "Fuel your body right",
+      "positive": ["Ate vegetables", "No junk food"],
+      "negative": ["Ate fast food", "Skipped meal"]
+    }
+  }
+}
