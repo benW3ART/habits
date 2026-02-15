@@ -60,19 +60,19 @@ export const Hero: FC = () => {
         </p>
       </div>
 
-      {/* Stats preview */}
+      {/* Stats preview - Early adopter messaging */}
       <div className="relative mt-16 grid grid-cols-3 gap-8 text-center">
         <div>
-          <div className="text-2xl sm:text-3xl font-display font-black text-primary">1K+</div>
-          <div className="text-xs text-muted-foreground">USERS</div>
+          <div className="text-2xl sm:text-3xl font-display font-black text-primary">🚀</div>
+          <div className="text-xs text-muted-foreground">EARLY ACCESS</div>
         </div>
         <div>
-          <div className="text-2xl sm:text-3xl font-display font-black text-primary">50K+</div>
-          <div className="text-xs text-muted-foreground">LOGS</div>
+          <div className="text-2xl sm:text-3xl font-display font-black text-primary">∞</div>
+          <div className="text-xs text-muted-foreground">POTENTIAL</div>
         </div>
         <div>
-          <div className="text-2xl sm:text-3xl font-display font-black text-primary">$10K+</div>
-          <div className="text-xs text-muted-foreground">STAKED</div>
+          <div className="text-2xl sm:text-3xl font-display font-black text-primary">0</div>
+          <div className="text-xs text-muted-foreground">GAS FEES</div>
         </div>
       </div>
     </section>

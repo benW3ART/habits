@@ -8,6 +8,14 @@ import {
   decodeSignature,
   type AuthPayload,
 } from '@/lib/solana/auth'
+import {
+  checkRateLimit,
+  getClientIP,
+  createRateLimitKey,
+  RATE_LIMITS,
+  validateCSRF,
+  csrfError,
+} from '@/lib/security'
 
 // Create supabase client lazily to avoid build-time errors
 function getSupabaseAdmin() {
@@ -18,6 +26,31 @@ function getSupabaseAdmin() {
 }
 
 export async function POST(request: NextRequest) {
+  // CSRF validation
+  const csrf = validateCSRF(request)
+  if (!csrf.valid) {
+    return csrfError(csrf.reason || 'CSRF validation failed')
+  }
+
+  // Rate limiting
+  const ip = getClientIP(request)
+  const rateLimitKey = createRateLimitKey(ip, 'auth')
+  const rateLimit = checkRateLimit(rateLimitKey, RATE_LIMITS.auth)
+  
+  if (!rateLimit.success) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please try again later.' },
+      { 
+        status: 429,
+        headers: {
+          'Retry-After': String(Math.ceil((rateLimit.retryAfterMs || 60000) / 1000)),
+          'X-RateLimit-Remaining': '0',
+          'X-RateLimit-Reset': String(rateLimit.resetAt),
+        },
+      }
+    )
+  }
+
   try {
     const body: AuthPayload = await request.json()
     const { walletAddress, message, signature } = body

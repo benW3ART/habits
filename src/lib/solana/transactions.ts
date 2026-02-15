@@ -75,10 +75,17 @@ export async function createBetEscrowTransaction(
 ): Promise<Transaction> {
   const connection = getConnection()
 
-  // Escrow wallet address (should be configured in env)
-  const escrowPubkey = new PublicKey(
-    process.env.NEXT_PUBLIC_ESCROW_WALLET || walletPubkey.toBase58()
-  )
+  // Escrow wallet address (MUST be configured in env)
+  const escrowWallet = process.env.NEXT_PUBLIC_ESCROW_WALLET
+  if (!escrowWallet) {
+    throw new Error(
+      'NEXT_PUBLIC_ESCROW_WALLET is not configured. ' +
+      'This is required for bet escrow functionality. ' +
+      'Please set this environment variable to a valid Solana wallet address.'
+    )
+  }
+  
+  const escrowPubkey = new PublicKey(escrowWallet)
 
   // Create transfer instruction
   const transferInstruction = SystemProgram.transfer({

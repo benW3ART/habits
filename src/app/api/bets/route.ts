@@ -1,5 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
+import {
+  checkRateLimit,
+  getClientIP,
+  createRateLimitKey,
+  RATE_LIMITS,
+  validateCSRF,
+  csrfError,
+} from '@/lib/security'
 
 function getSupabaseAdmin() {
   return createClient(
@@ -10,6 +18,23 @@ function getSupabaseAdmin() {
 
 // GET /api/bets - List user's bets
 export async function GET(request: NextRequest) {
+  // Rate limiting
+  const ip = getClientIP(request)
+  const rateLimitKey = createRateLimitKey(ip, 'bets')
+  const rateLimit = checkRateLimit(rateLimitKey, RATE_LIMITS.bets)
+  
+  if (!rateLimit.success) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please try again later.' },
+      { 
+        status: 429,
+        headers: {
+          'Retry-After': String(Math.ceil((rateLimit.retryAfterMs || 60000) / 1000)),
+        },
+      }
+    )
+  }
+
   try {
     const { searchParams } = new URL(request.url)
     const walletAddress = searchParams.get('wallet')
@@ -95,6 +120,29 @@ export async function GET(request: NextRequest) {
 
 // POST /api/bets - Create a new bet
 export async function POST(request: NextRequest) {
+  // CSRF validation
+  const csrf = validateCSRF(request)
+  if (!csrf.valid) {
+    return csrfError(csrf.reason || 'CSRF validation failed')
+  }
+
+  // Rate limiting
+  const ip = getClientIP(request)
+  const rateLimitKey = createRateLimitKey(ip, 'bets')
+  const rateLimit = checkRateLimit(rateLimitKey, RATE_LIMITS.bets)
+  
+  if (!rateLimit.success) {
+    return NextResponse.json(
+      { error: 'Too many requests. Please try again later.' },
+      { 
+        status: 429,
+        headers: {
+          'Retry-After': String(Math.ceil((rateLimit.retryAfterMs || 60000) / 1000)),
+        },
+      }
+    )
+  }
+
   try {
     const body = await request.json()
     const {
