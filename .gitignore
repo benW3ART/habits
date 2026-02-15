@@ -75,3 +75,5 @@ deploy-wallet.json
 target/
 .anchor/
 test-ledger/
+scripts/initialize.mjs
+tsconfig.tsbuildinfo
