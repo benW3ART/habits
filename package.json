@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@coral-xyz/anchor": "^0.32.1",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-progress": "^1.0.3",
@@ -23,10 +24,12 @@
     "@supabase/ssr": "^0.1.0",
     "@supabase/supabase-js": "^2.39.7",
     "bs58": "^6.0.0",
+    "chai": "^6.2.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "date-fns": "^3.3.1",
     "lucide-react": "^0.344.0",
+    "mocha": "^11.7.5",
     "next": "14.2.21",
     "next-intl": "^3.9.1",
     "next-pwa": "^5.6.0",
@@ -34,6 +37,7 @@
     "react-dom": "^18.3.1",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
+    "ts-node": "^10.9.2",
     "tweetnacl": "^1.0.3"
   },
   "devDependencies": {

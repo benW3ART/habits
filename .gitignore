@@ -69,3 +69,9 @@ coverage/
 credentials.json
 token.json
 .vercel
+deploy-wallet.json
+
+# Anchor/Solana
+target/
+.anchor/
+test-ledger/

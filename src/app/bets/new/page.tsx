@@ -71,7 +71,7 @@ export default function NewBetPage() {
       const tempBetId = crypto.randomUUID()
 
       // Step 1: Create and sign escrow transaction
-      const transaction = await createBetEscrowTransaction(
+      const { transaction } = await createBetEscrowTransaction(
         publicKey,
         data.stakeAmount,
         tempBetId
